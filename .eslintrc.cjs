@@ -15,6 +15,14 @@ module.exports = {
     ecmaVersion: 'latest',
   },
   settings: {
+    'import/resolver': {
+      'eslint-import-resolver-custom-alias': {
+        alias: {
+          '@': './src',
+        },
+        extensions: ['.js', '.jsx'],
+      },
+    },
     'import/core-modules': ['vite', '@vitejs/plugin-vue'],
   },
 };
