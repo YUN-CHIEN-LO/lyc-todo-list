@@ -1,0 +1,14 @@
+/// 定義全域色票
+$var_colors: (
+  "primary": #699eee,
+  "secondary": #de33c3,
+  "black": #000000,
+  "white": #ffffff,
+);
+
+/// 輸出變數模組
+:export {
+  @each $key, $value in $var_colors {
+    #{unquote($key)}: $value;
+  }
+}

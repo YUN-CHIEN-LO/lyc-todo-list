@@ -1,0 +1,17 @@
+/// 設置 flex
+///
+/// @param {string} $jc
+///   justify-content，預設 flex-start
+/// @param {string} $ai
+///   align-items，預設 center
+/// @param {string} $fd
+///   align-items，預設 column
+/// @param {string} $fw
+///   align-items，預設 wrap
+@mixin set-flex($jc: flex-start, $ai: center, $fd: column, $fw: wrap) {
+  display: flex;
+  justify-content: $jc;
+  align-items: $ai;
+  flex-direction: $fd;
+  flex-wrap: $fw;
+}
