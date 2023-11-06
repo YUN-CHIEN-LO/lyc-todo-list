@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --mode dev",
     "build": "vue-tsc && vite build",
     "preview": "vite preview"
   },
@@ -23,6 +23,7 @@
     "eslint-plugin-import": "^2.29.0",
     "eslint-plugin-jsdoc": "^46.8.2",
     "eslint-plugin-vue": "^9.18.1",
+    "rollup-plugin-visualizer": "^5.9.2",
     "sass": "^1.69.5",
     "typescript": "^5.0.2",
     "vite": "^4.4.5",

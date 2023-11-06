@@ -1,6 +1,9 @@
-import { defineConfig } from 'vite';
+import {
+  defineConfig, loadEnv, splitVendorChunkPlugin,
+} from 'vite';
 import vue from '@vitejs/plugin-vue';
 import path from 'path';
+import { visualizer } from 'rollup-plugin-visualizer';
 
 /**
  * 插入 scss 全域檔案
@@ -21,19 +24,46 @@ function setScssAdditionalData(content: string, filePath: string) {
 }
 
 // https://vitejs.dev/config/
-export default defineConfig({
-  plugins: [vue()],
-  css: {
-    preprocessorOptions: {
-      scss: {
-        // 使用全域變數
-        additionalData: setScssAdditionalData,
+/**
+ * 設定 vite
+ * @param {import('NodeJS').ProcessEnv} env - 環境變數
+ * @returns {import('vite').UserConfig} - 返回 vite 設定
+ */
+function setConfig(env) {
+  return defineConfig({
+    plugins: [
+      vue(),
+      splitVendorChunkPlugin(),
+      visualizer({
+        emitFile: true,
+        filename: 'build.html',
+        open: true,
+        gzipSize: true,
+        brotliSize: true,
+      })],
+    base: env.VITE_BASE_URL,
+    css: {
+      preprocessorOptions: {
+        scss: {
+          // 使用全域變數
+          additionalData: setScssAdditionalData,
+        },
       },
     },
-  },
-  resolve: {
-    alias: {
-      '@': path.resolve(__dirname, 'src'),
+    resolve: {
+      alias: {
+        '@': path.resolve(__dirname, 'src'),
+      },
     },
-  },
-});
+    server: {
+      host: env.VITE_HOST,
+      port: env.VITE_PORT,
+      open: true,
+    },
+  });
+}
+
+export default ({ mode }) => {
+  process.env = { ...process.env, ...loadEnv(mode, process.cwd()) };
+  return setConfig(process.env);
+};

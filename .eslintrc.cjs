@@ -25,4 +25,7 @@ module.exports = {
     },
     'import/core-modules': ['vite', '@vitejs/plugin-vue'],
   },
+  rules: {
+    'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
+  },
 };
