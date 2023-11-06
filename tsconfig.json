@@ -5,6 +5,7 @@
     "module": "ESNext",
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "skipLibCheck": true,
+    "types": ["node"],
 
     /* Bundler mode */
     "moduleResolution": "bundler",
@@ -18,7 +19,13 @@
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+
+    /* Alias */
+    "baseUrl": ".",
+    "paths": { "@/*": ["./src/*"] },
+
+    "typeRoots": ["./node_modules/@types", "./src/types"]
   },
   "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
   "references": [{ "path": "./tsconfig.node.json" }]
