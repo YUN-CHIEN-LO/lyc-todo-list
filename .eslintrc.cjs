@@ -20,7 +20,7 @@ module.exports = {
         alias: {
           '@': './src',
         },
-        extensions: ['.js', '.jsx'],
+        extensions: ['.js', '.jsx', '.ts', '.tsx', 'json', '.vue'],
       },
     },
     'import/core-modules': ['vite', '@vitejs/plugin-vue'],

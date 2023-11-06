@@ -41,7 +41,7 @@ function setConfig(env) {
         gzipSize: true,
         brotliSize: true,
       })],
-    base: env.VITE_BASE_URL,
+    base: `/${env.VITE_BASE_URL}`,
     css: {
       preprocessorOptions: {
         scss: {
