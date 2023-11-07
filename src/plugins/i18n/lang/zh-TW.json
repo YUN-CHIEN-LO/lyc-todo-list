@@ -1,0 +1,18 @@
+{
+  "sys": {
+    "projectName": "Lyc 待辦清單"
+  },
+  "lang": {
+    "en": "English",
+    "zhTW": "繁體中文"
+  },
+  "todoPage": {
+    "title": "歡迎!"
+  },
+  "loginPage": {
+    "title": "登入"
+  },
+  "errorPage": {
+    "title": "似乎出錯了..."
+  }
+}

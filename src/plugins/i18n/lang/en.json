@@ -1,0 +1,18 @@
+{
+  "sys": {
+    "projectName": "Lyc Todo List"
+  },
+  "lang": {
+    "en": "English",
+    "zhTW": "繁體中文"
+  },
+  "todoPage": {
+    "title": "Welcome!"
+  },
+  "loginPage": {
+    "title": "Log In"
+  },
+  "errorPage": {
+    "title": "Something went wrong..."
+  }
+}

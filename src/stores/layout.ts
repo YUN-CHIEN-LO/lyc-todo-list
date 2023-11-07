@@ -1,11 +1,13 @@
 import { defineStore } from 'pinia';
 import { getEnumKeyByValue, getEnumCount } from '@/utils';
 import lg from '@/plugins/local-storage';
-import { ThemeEnum, StorageEnum } from '@/types';
+import { ThemeEnum, StorageEnum, LangEnum } from '@/types';
 
 const getLayoutState = () => ({
   // 當前主題
   theme: ThemeEnum.light,
+  // 當前語系
+  lang: LangEnum.en,
 });
 
 export default defineStore('layout', {
@@ -13,6 +15,8 @@ export default defineStore('layout', {
   getters: {
     // 取得 當前主題
     getTheme: (state) => getEnumKeyByValue(ThemeEnum, state.theme),
+    // 取得 當前語系
+    getLang: (state) => getEnumKeyByValue(LangEnum, state.lang),
   },
   actions: {
     /**
@@ -28,6 +32,14 @@ export default defineStore('layout', {
     setTheme(theme: number) {
       this.theme = theme;
       lg.set(StorageEnum.THEME, theme);
+    },
+    /**
+     * 設置當前語系
+     * @param {Storage.LangType} lang - 語系
+     */
+    setLang(lang: number) {
+      this.lang = lang;
+      lg.set(StorageEnum.LANG, lang);
     },
   },
 });
