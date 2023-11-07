@@ -73,6 +73,7 @@ const langOptions = getEnumEntries(LangEnum).map(([key, value]) => ({
  * 當切換主題
  */
 function handleToggleTheme() {
+  console.log('當切換主題');
   store.toggleTheme();
 }
 

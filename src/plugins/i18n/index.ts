@@ -5,11 +5,10 @@ import { getEnumKeyByValue } from '@/utils';
 import { LangEnum, StorageEnum } from '@/types';
 import lg from '@/plugins/local-storage';
 
-type MessageSchema = typeof en
-
+// 預設語系
 const defaultLang = Number(lg.get(StorageEnum.LANG)) ?? LangEnum.en;
 
-const i18n = createI18n<[MessageSchema], 'en' | 'zhTW'>({
+const i18n = createI18n<[typeof en], 'en' | 'zhTW'>({
   legacy: false,
   locale: getEnumKeyByValue(LangEnum, defaultLang),
   globalInjection: true,

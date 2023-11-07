@@ -18,8 +18,9 @@ export function getEnumCount(enumObj: object): number {
 }
 
 /**
- *
- * @param enumObj
+ * 取得 enum entries 陣列
+ * @param {object} enumObj - enum 物件
+ * @returns {Array} - enum entries 陣列
  */
 export function getEnumEntries(enumObj: object): Array<[string, number]> {
   const length = getEnumCount(enumObj);

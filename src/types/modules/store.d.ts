@@ -14,7 +14,7 @@ declare global {
     // 主題名稱
     type ThemeType = Record<ThemeEnum, number>;
     // 語系名稱
-    type LangEnum = Record<LangEnum, number>;
+    type LangType = Record<LangEnum, number>;
   }
 }
 
