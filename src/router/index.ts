@@ -1,7 +1,10 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import LayoutFrame from '@/components/TodoLayout.vue';
-import accessRoutes from '@/router/routes/access.ts';
-import whiteNameRoutes from '@/router/routes/white-name.ts';
+import accessRoutes from '@/router/routes/access';
+import whiteNameRoutes from '@/router/routes/white-name';
+import lg from '@/plugins/local-storage';
+import useLayoutStore from '@/stores/layout';
+import { StorageEnum } from '@/types';
 
 const baseUrl = import.meta.env.VITE_BASE_URL;
 
@@ -40,6 +43,13 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(),
   routes,
+});
+
+router.beforeEach((to, from, next) => {
+  const layoutStore = useLayoutStore();
+  const saveTheme = lg.get(StorageEnum.THEME);
+  if (!layoutStore.$state.theme) layoutStore.setTheme(Number(saveTheme) ?? 0);
+  next();
 });
 
 export default router;

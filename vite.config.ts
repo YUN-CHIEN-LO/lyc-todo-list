@@ -25,7 +25,7 @@ function setScssAdditionalData(content: string, filePath: string) {
 // https://vitejs.dev/config/
 /**
  * 設定 vite
- * @param {import('NodeJS').ProcessEnv} env - 環境變數
+ * @param {NodeJS.ProcessEnv} env - 環境變數
  * @returns {import('vite').UserConfig} - 返回 vite 設定
  */
 function setConfig(env) {
