@@ -27,19 +27,19 @@ export default defineStore('layout', {
     },
     /**
      * 設置當前主題
-     * @param {Store.ThemeType} theme - 主題
+     * @param {number} theme - 主題
      */
     setTheme(theme: number) {
-      this.theme = theme;
+      this.theme = Number.isNaN(theme) ? ThemeEnum.light : theme;
       lg.set(StorageEnum.THEME, theme);
     },
     /**
      * 設置當前語系
-     * @param {Storage.LangType} lang - 語系
+     * @param {number} lang - 語系
      */
     setLang(lang: number) {
-      this.lang = lang;
-      lg.set(StorageEnum.LANG, lang);
+      this.lang = Number.isNaN(lang) ? LangEnum.en : lang;
+      lg.set(StorageEnum.LANG, lang as number);
     },
   },
 });

@@ -43,6 +43,7 @@ module.exports = {
     ],
     'jsdoc/no-undefined-types': 'off',
     'class-methods-use-this': 'off',
+    'no-undef': 'off',
   },
 
 };
