@@ -1,2 +1,22 @@
-@import "@/styles/_vars.module.scss";
 @import "@/styles/mixins.scss";
+@import "@/styles/_vars.module.scss";
+
+@mixin set-theme($theme) {
+  --color-primary: #{map.get($theme, "primary")};
+  --color-secondary: #{map.get($theme, "secondary")};
+}
+
+:root {
+  color-scheme: light dark;
+}
+
+[data-theme="light"] {
+  @include set-theme($theme: $theme-light);
+}
+
+[data-theme="dark"] {
+  @include set-theme($theme: $theme-dark);
+}
+
+$color-primary: var(--color-primary);
+$color-secondary: var(--color-secondary);
