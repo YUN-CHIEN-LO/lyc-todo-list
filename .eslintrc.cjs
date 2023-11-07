@@ -11,7 +11,10 @@ module.exports = {
     'plugin:jsdoc/recommended',
   ],
   parserOptions: {
-    parser: '@typescript-eslint/parser',
+    parser: {
+      ts: '@typescript-eslint/parser',
+      js: '@typescript-eslint/parser',
+    },
     ecmaVersion: 'latest',
   },
   settings: {
@@ -21,7 +24,7 @@ module.exports = {
         alias: {
           '@': './src',
         },
-        extensions: ['.js', '.jsx', '.ts', '.tsx', 'json', '.vue'],
+        extensions: ['.js', '.jsx', '.ts', '.tsx', '.json', '.vue'],
       },
     },
     'import/core-modules': ['vite', '@vitejs/plugin-vue'],
@@ -38,5 +41,8 @@ module.exports = {
         tsx: 'never',
       },
     ],
+    'jsdoc/no-undefined-types': 'off',
+    'class-methods-use-this': 'off',
   },
+
 };

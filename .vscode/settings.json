@@ -11,6 +11,9 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
   },
+  "eslint.validate": [
+    "typescript"
+  ],
   "editor.tabSize": 2,
   "editor.formatOnSave": true,
   // 換行符號

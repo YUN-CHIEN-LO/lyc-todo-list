@@ -5,33 +5,36 @@
     :data-theme="store.getTheme"
   >
     <v-app-bar :elevation="2">
-      <template #prepend> {{ store.getTheme }} </template>
-      <template #title>Todo List</template>
+      <template #prepend>
+        <v-icon icon="mdi-clipboard-check-multiple"></v-icon>
+      </template>
+      <template #title>LYC Todo List {{ getPageTitle }}</template>
       <template #append>
         <v-btn
-          icon="mdi-heart"
+          :icon="getThemeIcon"
           @click="handleToggleTheme"
         ></v-btn>
         <v-btn icon="mdi-magnify"></v-btn>
         <v-btn icon="mdi-dots-vertical"></v-btn>
       </template>
     </v-app-bar>
-    <div
-      class="temp"
-      :style="getThemeStyle"
-    ></div>
-    <pre> {{ getThemeStyle }} </pre>
     <router-view></router-view>
   </v-app>
 </template>
 
 <script setup lang="ts">
-import useLayoutStore from '@/store/layout';
 import { computed } from 'vue';
+import { useRoute } from 'vue-router';
+import useLayoutStore from '@/stores/layout';
+
 // 使用 layout 倉儲
 const store = useLayoutStore();
-// 取得當前主題
-const getThemeStyle = computed(() => ({ colorScheme: store.getTheme }));
+// 使用路由
+const route = useRoute();
+// 取得當前主題圖示
+const getThemeIcon = computed(() => (store.$state.theme ? 'mdi-white-balance-sunny' : 'mdi-moon-waning-crescent'));
+// 取得當前頁標題
+const getPageTitle = computed(() => (route.meta.title ? ` / ${route.meta.title}` : ''));
 
 /**
  * 當切換主題
@@ -42,12 +45,4 @@ function handleToggleTheme() {
 
 </script>
 
-<style lang="scss" scoped>
-.temp {
-  margin-top: 200px;
-  width: 100px;
-  height: settings.$button-height;
-  border: solid 5px $color-secondary;
-  background-color: $color-primary;
-}
-</style>
+<style lang="scss" scoped></style>
