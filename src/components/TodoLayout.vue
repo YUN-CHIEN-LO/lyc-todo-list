@@ -38,7 +38,9 @@
         <v-btn icon="mdi-dots-vertical"></v-btn>
       </template>
     </v-app-bar>
-    <router-view></router-view>
+    <div class="lyc-container">
+      <router-view></router-view>
+    </div>
   </v-app>
 </template>
 
@@ -61,7 +63,7 @@ const route = useRoute();
 // 取得當前主題圖示
 const getThemeIcon = computed(() => (store.$state.theme ? 'mdi-white-balance-sunny' : 'mdi-moon-waning-crescent'));
 // 取得當前頁標題
-const getPageTitle = computed(() => (route.meta.title ? ` / ${i18n.global.t(route.meta.title as string)}` : ''));
+const getPageTitle = computed(() => (route.meta.title ? ` | ${i18n.global.t(route.meta.title as string)}` : ''));
 
 // 語系選項
 const langOptions = getEnumEntries(LangEnum).map(([key, value]) => ({
@@ -87,4 +89,8 @@ function handleChangeLang(lang: number) {
 
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.lyc-container {
+  margin-top: settings.$app-bar-prominent-height;
+}
+</style>
