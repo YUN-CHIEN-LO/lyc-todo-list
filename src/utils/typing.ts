@@ -16,3 +16,12 @@ export function getEnumKeyByValue(enumObj: object, value: number): string {
 export function getEnumCount(enumObj: object): number {
   return Object.keys(enumObj).length / 2;
 }
+
+/**
+ *
+ * @param enumObj
+ */
+export function getEnumEntries(enumObj: object): Array<[string, number]> {
+  const length = getEnumCount(enumObj);
+  return Object.entries(enumObj).slice(length, length * 2);
+}
